@@ -13,19 +13,13 @@
     </font>
     </p>
     <hr color="red">
-    <form>
-        <input><br>
-        <label> Button<input type="button" name="button" value="Click me, Please"></label>
-        <br><input type="password" placeholder="your password">
-        <br><select>
-            <option value="5">Very Positive</option>
-            <option value="4">Positive</option>
-            <option value="3">Neutral</option>
-            <option value="2">Negative</option>
-            <option value="1">Very Negative</option>
-            </select>
-        <br><input type="submit">
-        <a href="{%url 'mainpage'%}">link to homepage</a>
+        <a href="/admin">link to admin</a>
+
+            {% if request.user.is_authenticated %}
+                <h3>Hello, {{user.username}}</h3>| <a href="{%url 'logout'%}">Выйти</a>
+            {% else %}
+                <a href="{%url 'register'%}">REGISTRATE</a>| <a href="{%url 'login'%}">LOGIN</a>
+            {%endif%}
     </form>
     {% for offer in offer_list%}
         <hr align="center">
@@ -34,8 +28,17 @@
         <p align="center">{{offer.offer_description|truncatewords:50}}</p>
         <p align="center">{{offer.offer_price}}</p>
         <hr align="center">
-
-
     {%endfor%}
+    <nav class="list-pages" >
+        <ul>
+            {% if page_obj.has_other_pages %}
+            {% for p in paginator.page_range %}
+            <li class="page-num">
+                <a href="?page={{ p }}">{{p}}</a>
+            </li>
+            {%endfor%}
+            {%endif%}
+        </ul>
+    </nav>
 </body>
 </html>
