@@ -1,15 +1,16 @@
 from django.contrib.auth import logout, login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 
-from .models import Offer, Comment
+from .models import Offer, Comment, avatarka
 from django.views.generic.base import View
-from .form import CommentForm, RegisterUserForm
+from .form import CommentForm, RegisterUserForm, ChangeUserProfile
 
 # Create your views here.
 
@@ -48,6 +49,18 @@ class RegisterUser(CreateView):
 def logout_user(request):
     logout(request)
     return redirect("mainpage")
+
+
+def ProfileUser(request, user_id):
+    form = ChangeUserProfile(request.POST, request.FILES)
+    if request.POST:
+        obj = avatarka.objects.get(user_avatar_id = user_id)
+        obj.pict = request.FILES.get("pict")
+        obj.save()
+        return redirect("profile", user_id=user_id)
+    else:
+        form = ChangeUserProfile()
+    return render(request, "epood/user_profile.html", {"user": User.objects.get(pk=user_id), "form": form})
 
 
 

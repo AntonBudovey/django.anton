@@ -31,7 +31,7 @@
 <h3>COMMENTS</h3>
 {% for COMMENT in offer.comment_set.all %}
     <p>{{COMMENT.author_pict.}}</p>
-    <img src="/media/{{ COMMENT.author_pict }}" align="left" width="130" height="100">
+    <img src="{{ COMMENT.author_pict.url }}" align="left" width="130" height="100">
     <hr>
     <p><b>{{COMMENT.author_name}}</b></p>
     <p align="center">{{COMMENT.comment_text}}</p>

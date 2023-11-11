@@ -13,10 +13,10 @@
     </font>
     </p>
     <hr color="red">
-        <a href="/admin">link to admin</a>
+        <p align="right"><a href="/admin" >link to admin</a></p>
 
             {% if request.user.is_authenticated %}
-                <h3>Hello, {{user.username}}</h3>| <a href="{%url 'logout'%}">Выйти</a>
+                <a href="{{ user.avatarka.get_absolute_url }}">{{user.username}}</a> <h3>Hello, {{user.username}}</h3>| <a href="{%url 'logout'%}">Выйти</a>
             {% else %}
                 <a href="{%url 'register'%}">REGISTRATE</a>| <a href="{%url 'login'%}">LOGIN</a>
             {%endif%}
