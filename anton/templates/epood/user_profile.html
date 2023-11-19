@@ -1,12 +1,15 @@
-{% extends 'epood/BAZA.html' %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
 <body>
-<h1>{{user.username}} profile</h1><br>
-<p align="right"> <a href="{% url 'mainpage' %}">back to home</a></p>
 <form method="post" enctype="multipart/form-data">
     {%csrf_token%}
     {{form.as_p}}
     <button type="submit">Submit</button>
 </form>
 <img src="{{user.avatarka.pict.url}}" align="center">
-{% endblock %}
+</body>
+</html>
