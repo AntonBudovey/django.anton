@@ -41,7 +41,10 @@ class RegisterUser(CreateView):
     template_name = "epood/register.html"
     success_url = reverse_lazy("login")
     def form_valid(self, form):
+        print(form)
         user = form.save()
+        a = avatarka(user_avatar_id=user.pk)
+        a.save()
         login(self.request, user)
         return redirect("mainpage")
 

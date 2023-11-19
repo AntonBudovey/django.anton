@@ -1,15 +1,10 @@
+{% extends 'epood/BAZA.html' %}
+{% block content %}
 {% load epood_tags %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{offer.offer_name}}</title>
-</head>
-<body>
-<p align="left">
-    <h1 align="center">{{offer.offer_name}}</h1>
-    <p align="center">{{offer.offer_description|linebreaks}}</p>
-    <img src="{{offer.offer_picture.url}}" width="400" height="500">
+<p align="center">
+    <img src="{{offer.offer_picture.url}}" width="400" height="500" align="left" hspace="10">
+    <b>{{offer.offer_name}}</b>
+    {{offer.offer_description|linebreaks}}
 </p>
     <h3>{{offer.offer_price}}</h3>
     <form action="review/{{offer.id}}" method="post">
@@ -45,5 +40,4 @@
 {%endfor%}
 
 
-</body>
-</html>
+{% endblock %}
