@@ -1,14 +1,16 @@
 {% extends 'epood/BAZA.html' %}
 {% block content %}
 <body>
-<h1>LOGIN</h1>
-<hr>
-<p align="right"> <a href="{% url 'mainpage' %}">back to home</a></p>
+<div id="panel">
+<h2>LOGIN</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
-    <br><a href="{% url 'register' %}">register</a>
+    <button type="submit" class="submit_button">Login</button>
+    <br><p align="center"><a href="{% url 'register' %}">register</a></p>
+    <br>Admin user: Billy
+    <br>Password: notnaodutin1
 </form>
+</div>
 </body>
 {%endblock%}

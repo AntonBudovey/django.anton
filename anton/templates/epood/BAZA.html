@@ -1,14 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
+    <link type="text/css" href="{% static 'epood/css/styles.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide"/>
+    <link rel="shortcut icon" href="{% static 'epood/images/profige_icon.png2' %}" type="image/x-icon"/>
+    <style>
+    body {
+    background-image: url({% static 'epood/images/background.png' %});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+</style>
 </head>
 <body>
-<br><br><br><h1 align="center">MÄNGUSTORE</h1><br>
-<a href="{%url 'mainpage'%}">Homepage</a>
-<hr color="red">
+  <header>
+    <div id="site-name">Mängustore</div>
+    <nav>
+      <a href="/">Main</a>
+      <a href="/catalog">Catalog</a>
+      <a href="/about">About</a>
+    </nav>
+      <div class="icons">
+            <img src="{% static 'epood/images/cart_icon.jpg' %}" alt="Cart Icon" >
+          {% if  not request.user.is_authenticated %}
+            <a href="{%url 'login'%}"><img src="{% static 'epood/images/profige_icon2.png' %}" alt="Registration Icon"></a>
+          {% else %}
+            <a href="{{ user.avatarka.get_absolute_url }}"><img src="{{ user.avatarka.pict.url }}" style="border-radius: 50%; width: 40px; height: 40px;"></a>
+          {% endif %}
+    </div>
+  </header>
 {% block content %}
 {% endblock %}
+<p align="right"><a href="/admin" ><button class="red_button">ADMIN</button></a></p>
 </body>
 </html>

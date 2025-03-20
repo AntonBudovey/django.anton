@@ -16,7 +16,6 @@ from .form import CommentForm, RegisterUserForm, ChangeUserProfile
 
 
 class Homepage(ListView):
-    paginate_by = 3
     model = Offer
     template_name = "epood/main.html"
     context_object_name = "offer_list"
@@ -63,7 +62,7 @@ def ProfileUser(request, user_id):
         return redirect("profile", user_id=user_id)
     else:
         form = ChangeUserProfile()
-    return render(request, "epood/user_profile.html", {"user": User.objects.get(pk=user_id), "form": form})
+    return render(request, "epood/edit_photo.html", {"user": User.objects.get(pk=user_id), "form": form})
 
 
 
