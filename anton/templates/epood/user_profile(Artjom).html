@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #addPhotoBtn {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #addPhotoBtn span {
+            text-align: center;
+        }
+
+        #profileInfo {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        #saveBtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #saveBtn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div id="addPhotoBtn">
+        <span>Add Photo</span>
+    </div>
+
+    <div id="profileInfo">
+        <div>
+            <h2>Personal Information</h2>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName">
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName">
+        </div>
+
+        <div>
+            <h2>Contact Information</h2>
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </div>
+
+        <div>
+            <h2>Address</h2>
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country">
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city">
+
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street">
+
+            <label for="house">House:</label>
+            <input type="text" id="house" name="house">
+
+            <label for="apartment">Apartment:</label>
+            <input type="text" id="apartment" name="apartment">
+
+            <label for="postalCode">Postal Code:</label>
+            <input type="text" id="postalCode" name="postalCode">
+        </div>
+
+        <button id="saveBtn">Save</button>
+    </div>
+</body>
+</html>

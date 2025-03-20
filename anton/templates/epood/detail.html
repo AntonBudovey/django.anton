@@ -1,15 +1,10 @@
+{% extends 'epood/BAZA.html' %}
+{% block content %}
 {% load epood_tags %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{offer.offer_name}}</title>
-</head>
-<body>
-<p align="left">
-    <h1 align="center">{{offer.offer_name}}</h1>
-    <p align="center">{{offer.offer_description|linebreaks}}</p>
-    <img src="{{offer.offer_picture.url}}" width="400" height="500">
+<p align="center">
+    <img src="{{offer.offer_picture.url}}" width="400" height="500" align="left" hspace="10">
+    <b>{{offer.offer_name}}</b>
+    {{offer.offer_description|linebreaks}}
 </p>
     <h3>{{offer.offer_price}}</h3>
     <form action="review/{{offer.id}}" method="post">
@@ -26,11 +21,15 @@
         <br><input type="submit">
 
     </form>
-{% get_rating offer%}
+
+{% get_rating offer %}
 <h3>COMMENTS</h3>
-{% for COMMENT in offer.comment_set.all%}
+{% for COMMENT in offer.comment_set.all %}
+    <p>{{COMMENT.author_pict.}}</p>
+    <img src="{{ COMMENT.author_pict.url }}" align="left" width="130" height="100">
     <hr>
-    <p>{{COMMENT.comment_text}}</p>
+    <p><b>{{COMMENT.author_name}}</b></p>
+    <p align="center">{{COMMENT.comment_text}}</p>
     <p>{{COMMENT.pub_date}}</p>
     {% if COMMENT.rating %}
         <p align="right">{{COMMENT.get_rating_display}}</p>
@@ -41,5 +40,4 @@
 {%endfor%}
 
 
-</body>
-</html>
+{% endblock %}

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
@@ -7,7 +8,7 @@ class Offer(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     offer_description = models.TextField()
     offer_price = models.DecimalField(max_digits=5,decimal_places=2)
-    offer_picture = models.ImageField("Изображение", upload_to="image", default="img.jpg")
+    offer_picture = models.ImageField("Изображение", upload_to="image", default="image/img.jpg")
 
     def get_absolute_url(self):
         return reverse("details", kwargs={'offer_slug': self.slug})
@@ -18,7 +19,7 @@ class Offer(models.Model):
     class Meta:
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
-        ordering = ["offer_name"]
+        ordering = ["pk"]
 
 
 class Comment(models.Model):
@@ -31,7 +32,9 @@ class Comment(models.Model):
     offer = models.ForeignKey(Offer, on_delete=models.CASCADE)
     comment_text = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True,)
-    rating = models.PositiveSmallIntegerField(choices=antonrating,)
+    rating = models.PositiveSmallIntegerField(choices=antonrating)
+    author_name = models.TextField(default="anonymous user")
+    author_pict = models.ImageField(upload_to="avatars", default="img.jpg")
 
     def __str__(self):
         return f"{self.comment_text}, {self.rating}"
@@ -39,3 +42,15 @@ class Comment(models.Model):
     class Meta:
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
+
+
+class avatarka(models.Model):
+    user_avatar = models.OneToOneField(User, on_delete=models.CASCADE)
+    pict = models.ImageField(upload_to="avatars", default="avatars/img.jpg")
+
+
+    def get_absolute_url(self):
+        return reverse("profile", kwargs={'user_id': User.objects.get(pk=self.user_avatar_id).pk})
+
+    def __str__(self):
+        return f"{self.pk}"
