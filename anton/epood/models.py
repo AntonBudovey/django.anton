@@ -7,8 +7,8 @@ class Offer(models.Model):
     offer_name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     offer_description = models.TextField()
-    offer_price = models.DecimalField(max_digits=5,decimal_places=2)
-    offer_picture = models.ImageField("Изображение", upload_to="image", default="image/img.jpg")
+    offer_price = models.DecimalField(max_digits=5, decimal_places=2)
+    offer_picture = models.ImageField( upload_to="image", default="image/img.jpg")
 
     def get_absolute_url(self):
         return reverse("details", kwargs={'offer_slug': self.slug})
@@ -17,8 +17,6 @@ class Offer(models.Model):
         return f"{self.offer_name}"
 
     class Meta:
-        verbose_name = "Товар"
-        verbose_name_plural = "Товары"
         ordering = ["pk"]
 
 
@@ -39,9 +37,6 @@ class Comment(models.Model):
     def __str__(self):
         return f"{self.comment_text}, {self.rating}"
 
-    class Meta:
-        verbose_name = "Комментарий"
-        verbose_name_plural = "Комментарии"
 
 
 class avatarka(models.Model):

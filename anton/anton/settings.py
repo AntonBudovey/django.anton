@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-9o0x8ektbe3bq3oz1_-xrm(2q+ky9k^75y5ad*y$tvn^utx9=b
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ["antonbud.beget.tech", "www.antonbud.beget.tech"]
 
 
 # Application definition
@@ -84,7 +85,7 @@ DATABASES = {
         #"ENGINE": "django.db.backends.mysql",
         #"NAME": "antonbud_django",
         #"USER": "antonbud_django",
-        #"PASSWORD": "1FsGB6*J",
+        #"PASSWORD": "h6Ms5a*q",
         #"HOST": "Localhost",
         #"PORT": "3306",
     }
@@ -113,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Europe/Tallinn'
 
@@ -125,14 +126,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATICFILES_DIRS = [STATIC_DIR]
+STATICFILES_DIRS = []
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
